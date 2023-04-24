@@ -47,6 +47,7 @@
 
 .Container-pedidos .titutloPedido{
   margin-right: 15px;
+  
 }
 .Container-pedidos .quantidade{
   margin: 0 5px;
@@ -54,4 +55,12 @@
 
 .Container-pedidos .pedido{
   margin: 10px auto;
+ border-bottom: 1px solid black;
+ padding: 10px;
+ width: 200px;
+}
+
+.Container-pedidos h3{
+  padding-top: 15px;
+  border: 1px solid black;
 }
