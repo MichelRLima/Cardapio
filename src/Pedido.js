@@ -9,7 +9,7 @@ function Pedido() {
 const [total, setTotal] = useState(0)
 
 //Gerar pedido para envio
-const [pedido, setPedido] = useState("PEDIDO:")
+const [pedido, setPedido] = useState("PEDIDO DE: ")
 
 
 const valorSanduicheA = 2;
@@ -46,6 +46,7 @@ const [numero, setNumero] = useState("")
 const [referencia, setReferencia] = useState("")
 
 //Selecionar forma de pagamento
+const [nome, setNome] =  useState("")
 const [pagamento, setPagamento] = useState('Sem forma de pagamento');
 const [troco, setTroco] = useState('');
 //atualizar valor total de cada item do cardapaio
@@ -120,6 +121,7 @@ function fazerPedido(){
   
   //Sanduiches
   if(SanduicheA || SanduicheB || SanduicheC){
+    setPedido(pedido => pedido+`${nome}`)
     setPedido(pedido => pedido+`\n`)
     setPedido(pedido => pedido+"SANDUICHES:")
         if(SanduicheA !== 0){
@@ -220,13 +222,14 @@ setPedido(pedido => pedido+`\n`)
         setPedido(pedido => pedido+`Cartão de débito`)
       }
       if(pagamento === 'Dinheiro'){
-        setPedido(pedido => pedido+`Dinheiro com troco para R$${troco}`)
+        setPedido(pedido => pedido+`Dinheiro com troco para R$${troco} \n`)
       }
     }
+setPedido(pedido => pedido+` \n VALOR TOTAL: R$${total}`)
        
 }
 
-console.log(pagamento)
+console.log(nome)
 return (
   <>
 
@@ -335,8 +338,11 @@ return (
       </div>
 
       <div className={styles.containerEndereco}>
+            <div className={styles.ContainerTitulo}>
             <h3>Endereço de entrega</h3>
-            
+            </div>  
+            <p>Cliente:</p>
+            <input type="text" step="any" placeholder='Seu nome' onChange={(e)=> setNome(e.target.value)}></input>
             <p>CEP:</p>
             <input type="number" step="any" placeholder='CEP' onChange={(e)=> setCep(e.target.value)}></input>
             <p>Rua: </p>
@@ -350,7 +356,9 @@ return (
       </div>
 
       <div className={styles.containerPagamento}>
+        <div className={styles.ContainerTitulo}>
       <h3>Forma de pagamento</h3>
+      </div>
       <div className={styles.sessaoPagamento}>
       <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de crédito')} style={{background: pagamento==='Cartão de crédito' && 'red',color: pagamento==='Cartão de crédito' && 'white' }}>Cartao de credito</button>
       <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de débito')}  style={{background: pagamento==='Cartão de débito' && 'red',color: pagamento==='Cartão de débito' && 'white' }}>Cartao de debito</button>
@@ -366,7 +374,7 @@ return (
       </div>
       
      
-      <button type='submit' onClick={fazerPedido}><WhatsappLink pedido={pedido}/></button>
+      <button className={styles.buttonEnviar} type='submit' onClick={fazerPedido}><WhatsappLink pedido={pedido}/></button>
   </>
 )
 }

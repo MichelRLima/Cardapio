@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './WhatsappLink.module.css'; 
 function WhatsappLink(props) {
   
 
@@ -11,7 +11,7 @@ function WhatsappLink(props) {
   
   return (
     <>
-   <a href={link} target="_blank" rel="noopener noreferrer">pedido</a>
+   <a className={styles.link} href={link} target="_blank" rel="noopener noreferrer">Fazer pedido</a>
    
     </>
   );
