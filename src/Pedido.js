@@ -126,17 +126,17 @@ function fazerPedido(){
     setPedido(pedido => pedido+"SANDUICHES:")
         if(SanduicheA !== 0){
           
-          setPedido(pedido => pedido+` \n Sanduiche tipo A x ${SanduicheA}`)
+          setPedido(pedido => pedido+` \n ${SanduicheA} x Sanduiche tipo A`)
           
         }
         if(SanduicheB !== 0){
         
-          setPedido(pedido => pedido+` \n Sanduiche tipo B x ${SanduicheB}`)
+          setPedido(pedido => pedido+` \n ${SanduicheB} x Sanduiche tipo B`)
         
         }
         if(SanduicheC !== 0){
       
-          setPedido(pedido => pedido+`\n Sanduiche tipo C x ${SanduicheC}`)
+          setPedido(pedido => pedido+`\n ${SanduicheC} x Sanduiche tipo C`)
         
         }
         if(obsSanduiche !== ""){
@@ -153,17 +153,17 @@ function fazerPedido(){
     setPedido(pedido => pedido+"\n SUCOS:")
         if(sucoA !== 0){
         
-          setPedido(pedido => pedido+`\n Suco tipo A x${sucoA}`)
+          setPedido(pedido => pedido+`\n ${sucoA} x Suco tipo A`)
           
         }
         if(sucoB !== 0){
         
-        setPedido(pedido => pedido+`\n Suco tipo B x${sucoB}`)
+        setPedido(pedido => pedido+`\n ${sucoB} x Suco tipo B`)
         
         }
         if(sucoC !== 0){
 
-        setPedido(pedido => pedido+`\n Suco tipo C x${sucoC}`)
+        setPedido(pedido => pedido+`\n ${sucoC} Suco tipo C`)
         
         }
         if(obsSuco !== ""){
@@ -178,17 +178,17 @@ function fazerPedido(){
       setPedido(pedido => pedido+"\n SOBREMESA:")
       if(sobremesaA !== 0){
 
-        setPedido(pedido => pedido+`\n sobremesa tipo A x${sobremesaA}`)
+        setPedido(pedido => pedido+`\n ${sobremesaA} x sobremesa tipo A`)
         
       }
       if(sobremesaB !== 0){
 
-        setPedido(pedido => pedido+`\n Sobremesa tipo B x${sobremesaB}`)
+        setPedido(pedido => pedido+`\n ${sobremesaB} x Sobremesa tipo B`)
       
       }
       if(sobremesaC !== 0){
 
-        setPedido(pedido => pedido+`\n Sobremesa tipo C x${sobremesaC}`)
+        setPedido(pedido => pedido+`\n ${sobremesaC} x Sobremesa tipo C`)
       
       }
       if(obsSobremesa !== ""){
