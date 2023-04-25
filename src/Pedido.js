@@ -1,4 +1,10 @@
-function Pedido(){
+import './App.css';
+import { useState, useEffect } from 'react'
+import WhatsappLink from './WhatsappLink';
+import styles from './pedido.module.css'; 
+
+function Pedido() {
+  
 //Valor total do pedido
 const [total, setTotal] = useState(0)
 
@@ -9,6 +15,12 @@ const [pedido, setPedido] = useState("PEDIDO:")
 const valorSanduicheA = 2;
 const valorSanduicheB = 3;
 const valorSanduicheC = 1;
+const valorSucoA = 1.50;
+const valorSucoB = 2;
+const valorSucoC = 3;
+const valorSobremesaA = 4;
+const valorSobremesaB = 5;
+const valorSobremesaC = 7;
 ///////////////////////////////////////
 //Atualizar quantidade de itens
 const [SanduicheA, setSanduicheA] = useState(0)
@@ -16,22 +28,44 @@ const [SanduicheB, setSanduicheB] = useState(0)
 const [SanduicheC, setSanduicheC] = useState(0)
 const [obsSanduiche, SetObsSanduiche ] = useState("")
 //Atualizar quantidade de itens
-const [suco1, setSuco1] = useState(0)
-const [suco2, setSuco2] = useState(0)
-const [suco3, setSuco3] = useState(0)
+const [sucoA, setSucoA] = useState(0)
+const [sucoB, setSucoB] = useState(0)
+const [sucoC, setSucoC] = useState(0)
 const [obsSuco, SetObsSuco ] = useState("")
 
 //Atualizar quantidade de itens
-const [sobremesa1, setSobremesa1] = useState(0)
-const [sobremesa2, setSobremesa2] = useState(0)
-const [sobremesa3, setSobremesa3] = useState(0)
+const [sobremesaA, setSobremesaA] = useState(0)
+const [sobremesaB, setSobremesaB] = useState(0)
+const [sobremesaC, setSobremesaC] = useState(0)
 const [obsSobremesa, SetObsSobremsa ] = useState("")
 
+//Adicionar endereço
+const [cep, setCep] = useState("")
+const [rua, setRua] = useState("")
+const [numero, setNumero] = useState("")
+const [referencia, setReferencia] = useState("")
+
+//Selecionar forma de pagamento
+const [pagamento, setPagamento] = useState('Sem forma de pagamento');
+const [troco, setTroco] = useState('');
 //atualizar valor total de cada item do cardapaio
 const [ totalSanduicheA , setTotalSanduicheA] = useState(0)
 const [ totalSanduicheB , setTotalSanduicheB] = useState(0)
 const [ totalSanduicheC , setTotalSanduicheC] = useState(0)
+const [ totalSucoA , setTotalSucoA] = useState(0)
+const [ totalSucoB , setTotalSucoB] = useState(0)
+const [ totalSucoC , setTotalSucoC] = useState(0)
+const [ totalSobremesaA , setTotalSobremesaA] = useState(0)
+const [ totalSobremesaB , setTotalSobremesaB] = useState(0)
+const [ totalSobremesaC , setTotalSobremesaC] = useState(0)
 //foi usado o useEffect para atualizar o valor da quantiade de cada refeicao do cardapio
+
+
+const handleButtonClick = (buttonName) => {
+  setPagamento(buttonName);
+  
+};
+
 useEffect ( () => {
 if(setSanduicheA){
   setTotalSanduicheA(SanduicheA*valorSanduicheA)
@@ -46,13 +80,38 @@ if(setSanduicheC){
   setTotalSanduicheC(SanduicheC*valorSanduicheC)
 
 }
+if(setSucoA){
+  setTotalSucoA(sucoA*valorSucoA)
 
-},[SanduicheA, SanduicheB, SanduicheC])
+}
+if(setSucoB){
+  setTotalSucoB(sucoB*valorSucoB)
+
+}
+if(setSucoC){
+  setTotalSucoC(sucoC*valorSucoC)
+
+}
+if(setSobremesaA){
+  setTotalSobremesaA(sobremesaA*valorSobremesaA)
+
+}
+if(setSobremesaB){
+  setTotalSobremesaB(sobremesaB*valorSobremesaB)
+
+}
+
+if(setSobremesaC){
+  setTotalSobremesaC(sobremesaC*valorSobremesaC)
+
+}
+
+},[SanduicheA, SanduicheB, SanduicheC, sucoA, sucoB, sucoC, sobremesaA,sobremesaB, sobremesaC ])
 
 //Foi usado o useEffect para atualizar o valor total do pedido somando o total de todos as quantidade de pedido
 useEffect ( () =>{
-  setTotal(totalSanduicheA+totalSanduicheB+totalSanduicheC)
-},[totalSanduicheA, totalSanduicheB, totalSanduicheC])
+  setTotal(totalSanduicheA+totalSanduicheB+totalSanduicheC+totalSucoA+totalSucoB+totalSucoC+totalSobremesaA+totalSobremesaB+totalSobremesaC)
+},[totalSanduicheA, totalSanduicheB, totalSanduicheC, totalSucoA, totalSucoB, totalSucoC, totalSobremesaA, totalSobremesaB, totalSobremesaC])
 
 
 
@@ -60,165 +119,256 @@ useEffect ( () =>{
 function fazerPedido(){
   
   //Sanduiches
-  if(SanduicheA !== 0){
-    
-    setPedido(pedido => pedido+` \n Sanduiche tipo A x ${SanduicheA}`)
-    
+  if(SanduicheA || SanduicheB || SanduicheC){
+    setPedido(pedido => pedido+`\n`)
+    setPedido(pedido => pedido+"SANDUICHES:")
+        if(SanduicheA !== 0){
+          
+          setPedido(pedido => pedido+` \n Sanduiche tipo A x ${SanduicheA}`)
+          
+        }
+        if(SanduicheB !== 0){
+        
+          setPedido(pedido => pedido+` \n Sanduiche tipo B x ${SanduicheB}`)
+        
+        }
+        if(SanduicheC !== 0){
+      
+          setPedido(pedido => pedido+`\n Sanduiche tipo C x ${SanduicheC}`)
+        
+        }
+        if(obsSanduiche !== ""){
+        // pedido += `\n OBSERVAÇÕES: ${obsSanduiche}`
+        setPedido(pedido => pedido+`\n OBSERVAÇÕES: ${obsSanduiche}`)
+        
+          
+        }
+        
   }
-  if(SanduicheB !== 0){
-  
-    setPedido(pedido => pedido+` \n Sanduiche tipo B x ${SanduicheB}`)
-   
-  }
-  if(SanduicheC !== 0){
- 
-    setPedido(pedido => pedido+`\n Sanduiche tipo C x ${SanduicheC}`)
-   
-  }
-  if(obsSanduiche !== ""){
-   // pedido += `\n OBSERVAÇÕES: ${obsSanduiche}`
-   setPedido(pedido => pedido+`\n OBSERVAÇÕES: ${obsSanduiche}`)
-  
-    
-  }
-  setPedido(pedido => pedido+`\n`)
-
   //Sucos
-  if(suco1 !== 0){
-    //pedido += `\n Suco tipo 1 x${suco1}`
-    setPedido(pedido => pedido+`\n Suco tipo A x${suco1}`)
-    
-  }
-  if(suco2 !== 0){
-   // pedido += `\n Suco tipo 2 x${suco2}`
-   setPedido(pedido => pedido+`\n Suco tipo B x${suco2}`)
-   
-  }
-  if(suco3 !== 0){
-  // pedido += `\n Suco tipo 3 x${suco3}`
-  setPedido(pedido => pedido+`\n Suco tipo C x${suco3}`)
-   
-  }
-  if(obsSuco !== ""){
-   // pedido += `\n OBSERVAÇÕES: ${obsSuco}`
-   setPedido(pedido => pedido+`\n OBSERVAÇÕES: ${obsSuco}`)
-   
-  }
-  setPedido(pedido => pedido+`\n`)
+  if(sucoA || sucoB || sucoC){
+    setPedido(pedido => pedido+`\n`)
+    setPedido(pedido => pedido+"\n SUCOS:")
+        if(sucoA !== 0){
+        
+          setPedido(pedido => pedido+`\n Suco tipo A x${sucoA}`)
+          
+        }
+        if(sucoB !== 0){
+        
+        setPedido(pedido => pedido+`\n Suco tipo B x${sucoB}`)
+        
+        }
+        if(sucoC !== 0){
 
-if(sobremesa1 !== 0){
-  //pedido += `\n sobremesa tipo 1 x${sobremesa1}`
-  setPedido(pedido => pedido+`\n sobremesa tipo A x${sobremesa1}`)
-  
-}
-if(sobremesa2 !== 0){
-  //pedido += `\n Sobremesa tipo 2 x${sobremesa2}`
-  setPedido(pedido => pedido+`\n Sobremesa tipo B x${sobremesa2}`)
- 
-}
-if(sobremesa3 !== 0){
-  //pedido += `\n Sobremesa tipo 3 x${sobremesa3}`
-  setPedido(pedido => pedido+`\n Sobremesa tipo C x${sobremesa3}`)
- 
-}
-if(obsSobremesa !== ""){
-  //pedido += `\n OBSERVAÇÕES: ${obsSobremesa}`
-  setPedido(pedido => pedido+`\n OBSERVAÇÕES: ${obsSobremesa}`)
- 
-}
+        setPedido(pedido => pedido+`\n Suco tipo C x${sucoC}`)
+        
+        }
+        if(obsSuco !== ""){
+        // pedido += `\n OBSERVAÇÕES: ${obsSuco}`
+        setPedido(pedido => pedido+`\n OBSERVAÇÕES: ${obsSuco}`)
+        
+        }
+      }
+      //Sobremesas
+    if(sobremesaA || sobremesaB || sobremesaC){
+      setPedido(pedido => pedido+`\n`)
+      setPedido(pedido => pedido+"\n SOBREMESA:")
+      if(sobremesaA !== 0){
+
+        setPedido(pedido => pedido+`\n sobremesa tipo A x${sobremesaA}`)
+        
+      }
+      if(sobremesaB !== 0){
+
+        setPedido(pedido => pedido+`\n Sobremesa tipo B x${sobremesaB}`)
+      
+      }
+      if(sobremesaC !== 0){
+
+        setPedido(pedido => pedido+`\n Sobremesa tipo C x${sobremesaC}`)
+      
+      }
+      if(obsSobremesa !== ""){
+        //pedido += `\n OBSERVAÇÕES: ${obsSobremesa}`
+        setPedido(pedido => pedido+`\n OBSERVAÇÕES: ${obsSobremesa}`)
+      
+      }
+
+      
+    }
 
 setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+"ENDEREÇO:")
+setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+`CEP: ${cep}`)
+setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+`Rua: ${rua}, ${numero}`)
+setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+`Ponto de referência: ${referencia}`)
+setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+"FORMA DE PAGAMENTO:")
+setPedido(pedido => pedido+`\n`)
 
-
+    if (pagamento){
+      if(pagamento === 'Cartão de crédito'){
+        setPedido(pedido => pedido+`Cartão de crédito`)
+      }
+        
+      if(pagamento === 'Cartão de débito'){
+        setPedido(pedido => pedido+`Cartão de débito`)
+      }
+      if(pagamento === 'Dinheiro'){
+        setPedido(pedido => pedido+`Dinheiro com troco para R$${troco}`)
+      }
+    }
+       
 }
 
-    return(
-    <>
-    <h1>Projeto restaurante</h1>
-      <br/>
+console.log(pagamento)
+return (
+  <>
+
       
       <h2>Faça seu pedido</h2>
+    
+      <div className={styles.ContainerPedidos}>
 
-      <div className="Container-pedidos">
-          <h3>Sanduiche</h3>
+        <div className={styles.ContainerTitulo}>
+          <h3>Sanduíche</h3>
+        </div>
 
-          <div className="pedido" style={{border: "1px solid black"}}>
+          <div className={styles.pedido} >
 
-            <p className="titutloPedido">Sanduiche tipo A (R$2,00) </p>
-            <button onClick={()=> setSanduicheA(SanduicheA+1)}>+</button>
-            <span className="quantidade">{SanduicheA}</span>
-            <button disabled={SanduicheA !== 0 ? false : true} onClick={()=> setSanduicheA(SanduicheA-1)}>-</button>
+            <p className={styles.titutloPedido}>Sanduíche tipo A (R$2,00) </p>
+            <button className={styles.buttonMais} onClick={()=> setSanduicheA(SanduicheA+1)}>+</button>
+            <span className={styles.quantidade}>{SanduicheA}</span>
+            <button className={styles.buttonMenos} disabled={SanduicheA !== 0 ? false : true} onClick={()=> setSanduicheA(SanduicheA-1)}>-</button>
             
           </div>
           
 
-          <div className="pedido">
-            <span className="titutloPedido">Sanduiche tipo B</span>
-            <button onClick={()=> setSanduicheB(SanduicheB+1)}>+</button>
-            <span className="quantidade">{SanduicheB}</span>
-            <button disabled={SanduicheB !== 0 ? false : true} onClick={()=> setSanduicheB(SanduicheB-1)}>-</button>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Sanduíche tipo B (R$3,00)</p>
+            <button className={styles.buttonMais} onClick={()=> setSanduicheB(SanduicheB+1)}>+</button>
+            <span className={styles.quantidade}>{SanduicheB}</span>
+            <button className={styles.buttonMenos} disabled={SanduicheB !== 0 ? false : true} onClick={()=> setSanduicheB(SanduicheB-1)}>-</button>
           </div>
 
-          <div className="pedido">
-            <span className="titutloPedido">Sanduiche tipo C</span>
-            <button onClick={()=> setSanduicheC(SanduicheC+1)}>+</button>
-            <span className="quantidade">{SanduicheC}</span>
-            <button disabled={SanduicheC !== 0 ? false : true} onClick={()=> setSanduicheC(SanduicheC-1)}>-</button>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Sanduíche tipo C (R$1,00)</p>
+            <button className={styles.buttonMais} onClick={()=> setSanduicheC(SanduicheC+1)}>+</button>
+            <span className={styles.quantidade}>{SanduicheC}</span>
+            <button className={styles.buttonMenos} disabled={SanduicheC !== 0 ? false : true} onClick={()=> setSanduicheC(SanduicheC-1)}>-</button>
           </div>
           <input onChange={(e)=> SetObsSanduiche(e.target.value)} type="text" placeholder="Observações"></input>
 
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
+          <div className={styles.ContainerTitulo}>
           <h3>Sucos</h3>
-          <div className="pedido">
-            <span className="titutloPedido">Suco tipo A</span>
-            <button onClick={()=>setSuco1(suco1+1)}>+</button>
-            <span className="quantidade">{suco1}</span>
-            <button>-</button>
+          </div>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Suco tipo A (R$1,50)</p>
+            <button className={styles.buttonMais} onClick={()=>setSucoA(sucoA+1)}>+</button>
+            <span className={styles.quantidade}>{sucoA}</span>
+            <button className={styles.buttonMenos} disabled={sucoA !== 0 ? false : true} onClick={()=> setSucoA(sucoA-1)}>-</button>
           </div>
     
 
-          <div className="pedido">
-            <span className="titutloPedido">Suco  tipo B</span>
-            <button onClick={()=>setSuco2(suco2+1)}>+</button>
-            <span className="quantidade">{suco2}</span>
-            <button>-</button>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Suco  tipo B (R$2,00)</p>
+            <button className={styles.buttonMais} onClick={()=>setSucoB(sucoB+1)}>+</button>
+            <span className={styles.quantidade}>{sucoB}</span>
+            <button className={styles.buttonMenos} disabled={sucoB !== 0 ? false : true} onClick={()=> setSucoB(sucoB-1)}>-</button>
           </div>
 
-          <div className="pedido">
-            <span className="titutloPedido">Suco  tipo C</span>
-            <button onClick={()=>setSuco3(suco3+1)}>+</button>
-            <span className="quantidade">{suco3}</span>
-            <button>-</button>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Suco  tipo C (R$3,00)</p>
+            <button className={styles.buttonMais} onClick={()=>setSucoC(sucoC+1)}>+</button>
+            <span className={styles.quantidade}>{sucoC}</span>
+            <button className={styles.buttonMenos} disabled={sucoC !== 0 ? false : true} onClick={()=> setSucoC(sucoC-1)}>-</button>
           </div>
           <input onChange={(e)=> SetObsSuco(e.target.value)} type="text" placeholder="Observações"></input>
 
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
+          <div className={styles.ContainerTitulo}>
           <h3>Sobremesas</h3>
-          <div className="pedido">
-            <span className="titutloPedido">Sobremesa tipo A</span>
-            <button onClick={()=>setSobremesa1(sobremesa1+1)}>+</button>
-            <span className="quantidade">{sobremesa1}</span>
-            <button disabled={sobremesa1 !== 0 ? false : true} onClick={()=> setSobremesa1(sobremesa1-1)}>-</button>
+          </div>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Sobremesa tipo A (R$4,00)</p>
+            <button className={styles.buttonMais} onClick={()=>setSobremesaA(sobremesaA+1)}>+</button>
+            <span className={styles.quantidade}>{sobremesaA}</span>
+            <button className={styles.buttonMenos} disabled={sobremesaA !== 0 ? false : true} onClick={()=> setSobremesaA(sobremesaA-1)}>-</button>
           </div>
     
 
-          <div className="pedido">
-            <span className="titutloPedido">Sobremesa tipo B</span>
-            <button onClick={()=>setSobremesa2(sobremesa2+1)}>+</button>
-            <span className="quantidade">{sobremesa2}</span>
-            <button disabled={sobremesa2 !== 0 ? false : true} onClick={()=> setSobremesa2(sobremesa2-1)}>-</button>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Sobremesa tipo B (R$5,00)</p>
+            <button className={styles.buttonMais} onClick={()=>setSobremesaB(sobremesaB+1)}>+</button>
+            <span className={styles.quantidade}>{sobremesaB}</span>
+            <button className={styles.buttonMenos} disabled={sobremesaB !== 0 ? false : true} onClick={()=> setSobremesaB(sobremesaB-1)}>-</button>
           </div>
 
-          <div className="pedido">
-            <span className="titutloPedido">Sobremesa tipo C</span>
-            <button onClick={()=>setSobremesa3(sobremesa3+1)}>+</button>
-            <span className="quantidade">{sobremesa3}</span>
-            <button disabled={sobremesa3 !== 0 ? false : true} onClick={()=> setSobremesa3(sobremesa3-1)}>-</button>
+          <div className={styles.pedido}>
+            <p className={styles.titutloPedido}>Sobremesa tipo C (R$7,00)</p>
+            <button className={styles.buttonMais} onClick={()=>setSobremesaC(sobremesaC+1)}>+</button>
+            <span className={styles.quantidade}>{sobremesaC}</span>
+            <button className={styles.buttonMenos} disabled={sobremesaC !== 0 ? false : true} onClick={()=> setSobremesaC(sobremesaC-1)}>-</button>
           </div>
           <input onChange={(e)=> SetObsSobremsa(e.target.value)} type="text" placeholder="Observações"></input>
 
-          <h3>Total: R${total}</h3>
+          <br/>
+          <br/>
+          <h3>Total: R${total.toFixed(2)}</h3>
+          <br/>
+
+      
       </div>
 
-      <button onClick={fazerPedido}><WhatsappLink pedido={pedido}/></button>
-    </>
-    )
+      <div className={styles.containerEndereco}>
+            <h3>Endereço de entrega</h3>
+            
+            <p>CEP:</p>
+            <input type="number" step="any" placeholder='CEP' onChange={(e)=> setCep(e.target.value)}></input>
+            <p>Rua: </p>
+            <input  placeholder='Rua' type='text' onChange={(e)=> setRua(e.target.value)}></input>
+            <p>Número e complemento: </p>
+            <input placeholder='Número e complemento' type='text' onChange={(e)=> setNumero(e.target.value)}></input>
+            <p>Ponto de referência: </p>
+            <input placeholder='Ponto de referência' type='text' onChange={(e)=> setReferencia(e.target.value)}></input>
+            <br/>
+            <br/>
+      </div>
+
+      <div className={styles.containerPagamento}>
+      <h3>Forma de pagamento</h3>
+      <div className={styles.sessaoPagamento}>
+      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de crédito')} style={{background: pagamento==='Cartão de crédito' && 'red',color: pagamento==='Cartão de crédito' && 'white' }}>Cartao de credito</button>
+      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de débito')}  style={{background: pagamento==='Cartão de débito' && 'red',color: pagamento==='Cartão de débito' && 'white' }}>Cartao de debito</button>
+      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Dinheiro')}  style={{background: pagamento==='Dinheiro' && 'red',color: pagamento==='Dinheiro' && 'white' }}>Dinheiro</button>
+      <div style={{display: pagamento !=='Dinheiro' && 'none' }}>
+        <p>Troco para quanto?</p>
+        <span>R$</span> <input  onChange={(e)=> setTroco(e.target.value)} type="text" placeholder="Digite que pretendo pagar"></input>
+      </div>
+    </div>
+      
+
+      
+      </div>
+      
+     
+      <button type='submit' onClick={fazerPedido}><WhatsappLink pedido={pedido}/></button>
+  </>
+)
 }
+
+export default Pedido;

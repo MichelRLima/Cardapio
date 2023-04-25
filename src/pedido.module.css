@@ -1,0 +1,111 @@
+h2{
+    font-family: 'Ysabeau Light';
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.ContainerPedidos{
+    margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  background-color: #c6d96a;
+  border: 3px solid red;
+  border-radius: 8px;
+  margin-bottom: 60px;
+}
+
+.pedido{
+    margin: 10px auto;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    width: 200px;
+   }
+
+
+
+.titutloPedido{
+    margin-right: 15px;
+}
+.buttonMais{
+    border: none;
+    background-color: #c6d96a;
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.buttonMenos{
+    border: none;
+    background-color: #c6d96a;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+
+.quantidade{
+    margin: 0 5px;
+}
+
+.ContainerTitulo{
+    padding-top: 15px;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    border-top: 1px solid white;
+    color: #ab1a1a;
+  }
+
+  .ContainerTitulo h3{
+    margin-top: 10px;
+  }
+
+.containerEndereco{
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  background-color: #c6d96a;
+  border: 3px solid red;
+  border-radius: 8px;
+  margin-bottom: 60px;
+  }
+
+.containerPagamento{
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  background-color: #c6d96a;
+  border: 3px solid red;
+  border-radius: 8px;
+  margin-bottom: 60px;
+  }
+
+.botaoPagamento {
+    margin:15px auto;
+    display: block;
+    color: red;
+    border: 1px solid red;
+    border-radius: 10px;
+    width:150px;
+    height: 50px;
+    background-color: white;
+    font-size: 15px;
+    font-family: 'Ysabeau Light';
+    font-weight: 300;
+}
+
+.botaoPagamento:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
