@@ -201,6 +201,7 @@ function fazerPedido(){
     }
 
 setPedido(pedido => pedido+`\n`)
+setPedido(pedido => pedido+`\n`)
 setPedido(pedido => pedido+"ENDEREÇO:")
 setPedido(pedido => pedido+`\n`)
 setPedido(pedido => pedido+`CEP: ${cep}`)
