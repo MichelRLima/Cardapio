@@ -4,9 +4,11 @@
     font-size: 23px;
     font-family: 'Ysabeau Light';
     font-weight: 300;
+    width: 100%;
    
 }
 
 .link:hover{
     color: white;
+   
 }

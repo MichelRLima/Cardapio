@@ -366,7 +366,9 @@ return (
       <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Dinheiro')}  style={{background: pagamento==='Dinheiro' && 'red',color: pagamento==='Dinheiro' && 'white' }}>Dinheiro</button>
       <div style={{display: pagamento !=='Dinheiro' && 'none' }}>
         <p>Troco para quanto?</p>
-        <span>R$</span> <input  onChange={(e)=> setTroco(e.target.value)} type="text" placeholder="Digite que pretendo pagar"></input>
+        <span>R$</span> <input  onChange={(e)=> setTroco(e.target.value)} type="text" placeholder="Valor em R$"></input>
+        <br/>
+        <br/>
       </div>
     </div>
       
