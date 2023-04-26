@@ -10,7 +10,7 @@ h2{
     margin: 0 auto;
   width: 380px;
   text-align: center;
-  background-color: #c6d96a;
+  background-color: #ecf7b5;
   border: 3px solid red;
   border-radius: 8px;
   margin-bottom: 60px;
@@ -30,7 +30,7 @@ h2{
 }
 .buttonMais{
     border: none;
-    background-color: #c6d96a;
+    background-color: #ecf7b5;
     color: green;
     font-weight: bold;
     font-size: 20px;
@@ -39,7 +39,7 @@ h2{
 }
 .buttonMenos{
     border: none;
-    background-color: #c6d96a;
+    background-color: #ecf7b5;
     color: red;
     font-weight: bold;
     font-size: 20px;
@@ -68,7 +68,7 @@ h2{
   margin: 0 auto;
   width: 380px;
   text-align: center;
-  background-color: #c6d96a;
+  background-color: #ecf7b5;
   border: 3px solid red;
   border-radius: 8px;
   margin-bottom: 60px;
@@ -78,7 +78,7 @@ h2{
   margin: 0 auto;
   width: 380px;
   text-align: center;
-  background-color: #c6d96a;
+  background-color: #ecf7b5;
   border: 3px solid red;
   border-radius: 8px;
   margin-bottom: 60px;
@@ -110,6 +110,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+input[type=text],input[type=number]{
+  border-radius: 5px;
+  text-align: center;
+  border: 0.5px solid red;
+}
 .buttonEnviar{
     margin:15px auto;
     display: block;

@@ -6,6 +6,7 @@ import Pedido from './Pedido';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
+
 function App() {
 
 
@@ -19,7 +20,9 @@ function App() {
         
      
     </Routes>
+
     </BrowserRouter>
+   
   );
 }
 

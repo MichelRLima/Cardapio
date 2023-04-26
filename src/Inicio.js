@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from './inicio.module.css'; 
-
+import Titulo from "./Titulo";
 
 function Inicio (){
 
@@ -15,7 +15,7 @@ function Inicio (){
         <div className={styles.botaoPedido}>
             <Link to="/pedido"><button>Fazer Pedido</button></ Link> 
         </div>
-     
+        <Titulo />
       </>
    
     )
