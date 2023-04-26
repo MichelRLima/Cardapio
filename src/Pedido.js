@@ -361,8 +361,8 @@ return (
       <h3>Forma de pagamento</h3>
       </div>
       <div className={styles.sessaoPagamento}>
-      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de crédito')} style={{background: pagamento==='Cartão de crédito' && 'red',color: pagamento==='Cartão de crédito' && 'white' }}>Cartao de credito</button>
-      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de débito')}  style={{background: pagamento==='Cartão de débito' && 'red',color: pagamento==='Cartão de débito' && 'white' }}>Cartao de debito</button>
+      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de crédito')} style={{background: pagamento==='Cartão de crédito' && 'red',color: pagamento==='Cartão de crédito' && 'white' }}>Cartão de crédito</button>
+      <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Cartão de débito')}  style={{background: pagamento==='Cartão de débito' && 'red',color: pagamento==='Cartão de débito' && 'white' }}>Cartão de débito</button>
       <button className={styles.botaoPagamento} onClick={() => handleButtonClick('Dinheiro')}  style={{background: pagamento==='Dinheiro' && 'red',color: pagamento==='Dinheiro' && 'white' }}>Dinheiro</button>
       <div style={{display: pagamento !=='Dinheiro' && 'none' }}>
         <p>Troco para quanto?</p>
