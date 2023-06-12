@@ -10,7 +10,7 @@ function Inicio (){
     
        <>
         <div className={styles.containerTitulo}>
-            <h1>Restaurante</h1>
+            <h1>Hungry Chef</h1>
         </div>
         <div className={styles.botaoPedido}>
             <Link to="/pedido"><button>Fazer Pedido</button></ Link> 

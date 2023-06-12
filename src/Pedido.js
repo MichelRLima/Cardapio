@@ -245,26 +245,27 @@ return (
 
           <div className={styles.pedido} >
 
-            <p className={styles.titutloPedido}>Sanduíche tipo A (R$2,00) </p>
-            <button className={styles.buttonMais} onClick={()=> setSanduicheA(SanduicheA+1)}>+</button>
-            <span className={styles.quantidade}>{SanduicheA}</span>
+            <p className={styles.titutloPedido}>Sanduíche tipo A (R$2,00) </p>           
             <button className={styles.buttonMenos} disabled={SanduicheA !== 0 ? false : true} onClick={()=> setSanduicheA(SanduicheA-1)}>-</button>
+            <span className={styles.quantidade}>{SanduicheA}</span>
+            <button className={styles.buttonMais} onClick={()=> setSanduicheA(SanduicheA+1)}>+</button>
             
           </div>
           
 
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Sanduíche tipo B (R$3,00)</p>
-            <button className={styles.buttonMais} onClick={()=> setSanduicheB(SanduicheB+1)}>+</button>
+            <button className={styles.buttonMenos} disabled={SanduicheB !== 0 ? false : true} onClick={()=> setSanduicheB(SanduicheB-1)}>-</button>           
             <span className={styles.quantidade}>{SanduicheB}</span>
-            <button className={styles.buttonMenos} disabled={SanduicheB !== 0 ? false : true} onClick={()=> setSanduicheB(SanduicheB-1)}>-</button>
+            <button className={styles.buttonMais} onClick={()=> setSanduicheB(SanduicheB+1)}>+</button>
           </div>
 
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Sanduíche tipo C (R$1,00)</p>
-            <button className={styles.buttonMais} onClick={()=> setSanduicheC(SanduicheC+1)}>+</button>
-            <span className={styles.quantidade}>{SanduicheC}</span>
             <button className={styles.buttonMenos} disabled={SanduicheC !== 0 ? false : true} onClick={()=> setSanduicheC(SanduicheC-1)}>-</button>
+            <span className={styles.quantidade}>{SanduicheC}</span>
+            <button className={styles.buttonMais} onClick={()=> setSanduicheC(SanduicheC+1)}>+</button>
+            
           </div>
           <input onChange={(e)=> SetObsSanduiche(e.target.value)} type="text" placeholder="Observações"></input>
 
@@ -278,24 +279,26 @@ return (
           </div>
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Suco tipo A (R$1,50)</p>
-            <button className={styles.buttonMais} onClick={()=>setSucoA(sucoA+1)}>+</button>
-            <span className={styles.quantidade}>{sucoA}</span>
             <button className={styles.buttonMenos} disabled={sucoA !== 0 ? false : true} onClick={()=> setSucoA(sucoA-1)}>-</button>
+            <span className={styles.quantidade}>{sucoA}</span>
+            <button className={styles.buttonMais} onClick={()=>setSucoA(sucoA+1)}>+</button>
+            
           </div>
     
 
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Suco  tipo B (R$2,00)</p>
-            <button className={styles.buttonMais} onClick={()=>setSucoB(sucoB+1)}>+</button>
-            <span className={styles.quantidade}>{sucoB}</span>
             <button className={styles.buttonMenos} disabled={sucoB !== 0 ? false : true} onClick={()=> setSucoB(sucoB-1)}>-</button>
+            <span className={styles.quantidade}>{sucoB}</span>
+            <button className={styles.buttonMais} onClick={()=>setSucoB(sucoB+1)}>+</button>
+            
           </div>
 
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Suco  tipo C (R$3,00)</p>
-            <button className={styles.buttonMais} onClick={()=>setSucoC(sucoC+1)}>+</button>
-            <span className={styles.quantidade}>{sucoC}</span>
             <button className={styles.buttonMenos} disabled={sucoC !== 0 ? false : true} onClick={()=> setSucoC(sucoC-1)}>-</button>
+            <span className={styles.quantidade}>{sucoC}</span>
+            <button className={styles.buttonMais} onClick={()=>setSucoC(sucoC+1)}>+</button>
           </div>
           <input onChange={(e)=> SetObsSuco(e.target.value)} type="text" placeholder="Observações"></input>
 
@@ -309,34 +312,38 @@ return (
           </div>
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Sobremesa tipo A (R$4,00)</p>
-            <button className={styles.buttonMais} onClick={()=>setSobremesaA(sobremesaA+1)}>+</button>
-            <span className={styles.quantidade}>{sobremesaA}</span>
             <button className={styles.buttonMenos} disabled={sobremesaA !== 0 ? false : true} onClick={()=> setSobremesaA(sobremesaA-1)}>-</button>
+            <span className={styles.quantidade}>{sobremesaA}</span>
+            <button className={styles.buttonMais} onClick={()=>setSobremesaA(sobremesaA+1)}>+</button>
+            
           </div>
     
 
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Sobremesa tipo B (R$5,00)</p>
-            <button className={styles.buttonMais} onClick={()=>setSobremesaB(sobremesaB+1)}>+</button>
-            <span className={styles.quantidade}>{sobremesaB}</span>
             <button className={styles.buttonMenos} disabled={sobremesaB !== 0 ? false : true} onClick={()=> setSobremesaB(sobremesaB-1)}>-</button>
+            <span className={styles.quantidade}>{sobremesaB}</span>
+            <button className={styles.buttonMais} onClick={()=>setSobremesaB(sobremesaB+1)}>+</button>
+            
           </div>
 
           <div className={styles.pedido}>
             <p className={styles.titutloPedido}>Sobremesa tipo C (R$7,00)</p>
-            <button className={styles.buttonMais} onClick={()=>setSobremesaC(sobremesaC+1)}>+</button>
-            <span className={styles.quantidade}>{sobremesaC}</span>
             <button className={styles.buttonMenos} disabled={sobremesaC !== 0 ? false : true} onClick={()=> setSobremesaC(sobremesaC-1)}>-</button>
+            <span className={styles.quantidade}>{sobremesaC}</span>
+            <button className={styles.buttonMais} onClick={()=>setSobremesaC(sobremesaC+1)}>+</button>
+            
           </div>
           <input onChange={(e)=> SetObsSobremsa(e.target.value)} type="text" placeholder="Observações"></input>
 
           <br/>
           <br/>
-          <h3>Total: R${total.toFixed(2)}</h3>
+         
           <br/>
 
       
       </div>
+      <div className={styles.TotalFixed}><h3>Total: R${total.toFixed(2)}</h3></div>
 
       <div className={styles.containerEndereco}>
             <div className={styles.ContainerTitulo}>
